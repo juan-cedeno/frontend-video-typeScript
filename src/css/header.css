@@ -1,0 +1,44 @@
+.header {
+     display: flex;
+     background-color: #313131;
+     padding: 12px 40px;
+}
+.icon {
+     display: flex;
+     align-items: center;
+     flex: 1;
+}
+.icon i {
+     font-size: 29px;
+     color: gray;
+     margin-right: 10px;
+}
+.icon i:hover {
+     color: #ffffff;
+}
+.btn {
+     background-color: #c31331;
+     padding: 8px;
+     width: 126px;
+     border: 1px solid #c31331;
+     border-radius: 3px;
+     color: #fff;
+     font-size: 15px;
+     text-transform: capitalize;
+     margin-right: 70px;
+     cursor: pointer;
+     outline: none;
+}
+.btn:hover {
+     background-color: #f7032c;
+     transition: ease 0.5s;
+}
+.logout {
+     font-size: 17px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    text-transform: capitalize;
+    outline: none;
+    cursor: pointer;
+}

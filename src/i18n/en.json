@@ -1,0 +1,7 @@
+{
+     "email" : "Email",
+     "password" : "Password",
+     "login" : "login",
+     "addVideo" : "add video",
+     "logout" : "logout"
+}

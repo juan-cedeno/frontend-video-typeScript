@@ -9,7 +9,7 @@ export const AppRouter = () => {
           
           <Router>
                <Switch>
-                    <PublicRouter path = '/auth' component = {AuthRouter}/>
+                    <PublicRouter  path = '/auth' component = {AuthRouter}/>
                     <PrivateRouter path = '/' component = {DashboardRouter}/>
                </Switch>
           </Router>

@@ -1,50 +1,56 @@
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 import "../css/user.css";
 import { notificationMessage } from "../herlpers/notificationMessage";
 import UserService from "../services/user";
 
-
 interface IUser {
-     email : string,
-     password : string
+  email: string;
+  password: string;
 }
 
 export const LoginPage = () => {
-
   const { t } = useTranslation();
-  const {setUserLocalStarage } = useContext(StoreContext)
+  const { setUserLocalStarage } = useContext(StoreContext);
 
   const [valueLogin, setValueLogin] = useState<IUser>({
-       email : 'test@test.com',
-       password : '123456'
-  })
+    email: "test@test.com",
+    password: "123456",
+  });
 
-  const {email , password} = valueLogin
-  const history = useHistory()
+  const [loading, setLoading] = useState<boolean>(false);
+  const { email, password } = valueLogin;
+  const history = useHistory();
 
-  const handlenChangeLogin = (e : React.ChangeEvent <HTMLInputElement> ) => {
-     setValueLogin({
-            ...valueLogin,
-            [e.target.name]:e.target.value
-       })
-  }
+  const handlenChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValueLogin({
+      ...valueLogin,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handlenSubmitLogin = async (e : React.FormEvent <HTMLFormElement>) => {
-     e.preventDefault()
-     const user = await UserService.loginUser(email , password)
+  const handlenSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    const user = await UserService.loginUser(email, password);
+    setLoading(false);
 
-     if(user?.message) {
-        return notificationMessage('Error' , user.message , 'danger')
-     }
-     if (user) {
-       setUserLocalStarage(user)
-       history.go(0)
-     }
+    setValueLogin({
+      email: "",
+      password: "",
+    });
 
-  }
+    if (user?.message) {
+      return notificationMessage("Error", user.message, "danger");
+    }
+    if (user) {
+      setUserLocalStarage(user);
+      history.go(0);
+    }
+    setLoading(false);
+  };
 
   return (
     <>
@@ -66,11 +72,11 @@ export const LoginPage = () => {
           </a>
 
           <a href="mailto:juancc0315@gmail.com">
-          <i className="far fa-envelope"></i>
+            <i className="far fa-envelope"></i>
           </a>
         </div>
 
-        <form onSubmit = {handlenSubmitLogin}>
+        <form onSubmit={handlenSubmitLogin}>
           <label>{t("email")}</label>
           <input
             type="email"
@@ -78,8 +84,8 @@ export const LoginPage = () => {
             placeholder={t("email")}
             autoComplete="off"
             autoFocus
-            value = {email}
-            onChange = {handlenChangeLogin}
+            value={email}
+            onChange={handlenChangeLogin}
           />
 
           <label>{t("password")}</label>
@@ -88,11 +94,17 @@ export const LoginPage = () => {
             name="password"
             placeholder={t("password")}
             autoComplete="off"
-            value = {password}
-            onChange = {handlenChangeLogin}
+            value={password}
+            onChange={handlenChangeLogin}
           />
 
-          <button type="submit">{t("login")}</button>
+          <button
+            className={`${loading && "disable"}`}
+            disabled={loading}
+            type="submit"
+          >
+            {t("login")}
+          </button>
         </form>
       </div>
     </>

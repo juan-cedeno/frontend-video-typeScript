@@ -2,6 +2,7 @@
      display: flex;
      background-color: #313131;
      padding: 12px 40px;
+     
 }
 .icon {
      display: flex;
@@ -15,6 +16,16 @@
 }
 .icon i:hover {
      color: #ffffff;
+}
+.icon h3 {
+     text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 40px;
+}
+.icon h3:hover {
+     color: rgb(185, 185, 185);
+     transition: ease 0.5s;
 }
 .btn {
      background-color: #c31331;

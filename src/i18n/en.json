@@ -3,5 +3,8 @@
      "password" : "Password",
      "login" : "login",
      "addVideo" : "add video",
-     "logout" : "logout"
+     "logout" : "logout",
+     "name" : "Name",
+     "videoUrl" : "Video url",
+     "editVideo" : "edit video"
 }

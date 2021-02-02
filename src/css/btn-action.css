@@ -1,0 +1,10 @@
+.btn-action button {
+     font-size: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-right: 5px;
+}
+.delete {
+     color: red;
+}

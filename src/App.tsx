@@ -5,12 +5,12 @@ import { StoreContext } from './context/StoreContext';
 import './i18n'
 import { User } from './interfaces/user';
 import { AppRouter } from './routers/AppRouter';
+import { Spinner } from './components/Spinner';
 
 function App() {
 
   const [user, setUser] = useState<User | undefined>()
   const [checking, setChecking] = useState(true)
-
   
   const setUserLocalStarage = (user : User) => {
     localStorage.setItem('USER' , JSON.stringify(user))
@@ -25,8 +25,8 @@ function App() {
       if (userInfo) {
         const user = JSON.parse(userInfo)
         setUser(user)
-        setChecking(false)
       }
+      setChecking(false)
     }
     getUserLocalStorage()
   }, [])
@@ -34,10 +34,13 @@ function App() {
   const logOut = () => {
     localStorage.clear()
     setUser(undefined)
-    setChecking(true)
+    setChecking(false)
 
   }
 
+  if (checking) {
+    return <Spinner/>
+  }
 
   return (
     <div>

@@ -25,6 +25,7 @@ export const Header = () => {
         <a href="http://" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-linkedin-in"></i>
         </a>
+        <h3 onClick = {() => history.push('/')}>juan cedeño</h3>
       </div>
       <div>
            <button onClick = {handlenAdd} className = 'btn'>{t('addVideo')}</button>

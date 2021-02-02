@@ -7,3 +7,16 @@ body {
   font-family: 'Poppins', sans-serif;
 
 }
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(236, 236, 236);
+}
+.disable {
+  background-color: gray !important;
+  border: 1px solid gray !important;
+  cursor: no-drop !important;
+  color: white !important;
+}

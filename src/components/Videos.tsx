@@ -6,20 +6,23 @@ import '../css/video.css'
 import { Spinner } from "./Spinner";
 
 export const Videos = () => {
-
+     
      const [videos, setVideos] = useState<Video[]>([])
      const [loading, setLoading] = useState<boolean>(false)
 
      useEffect(() => {
           setLoading(true)
           const getVideos = async () => {
-            const data = await VideoService.getVideos()
-            setVideos(data)
+               const data = await VideoService.getVideos()
+               setVideos(data)
             setLoading(false)
             
           }
           getVideos()
-       }, [])
+     }, [])
+     if (loading) {
+          return <Spinner/>
+     }
 
        const deleteVideo = (id : string) => {
             VideoService.deleteVideo(id)
@@ -27,9 +30,6 @@ export const Videos = () => {
             setVideos(videoDeleted)
        }
 
-       if (loading) {
-            return <Spinner/>
-       }
 
      return (
           <div className = 'cont-video'> 
